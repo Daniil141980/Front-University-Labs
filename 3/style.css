@@ -1,0 +1,140 @@
+
+article {
+    padding-top: 10px;
+    width: 60%;
+    margin-left: 40px;
+    background: #333333;
+}
+
+section {
+    padding-top: 10px;
+    margin: 25px;
+    background: #02ACE5;
+    transition: all linear 0.5s;
+}
+
+section:hover {
+    background: #A9E8E7;
+}
+
+li:active {
+    color: #4CBDBB;
+}
+
+a:visited {
+    color: black;
+    background: #02ACE5;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    margin-top: 100px;
+    z-index: 100;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    background-color: #333333;
+}
+
+header nav ul {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style: none;
+    padding: 0;
+    margin-left: 10px;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: #A9E8E7;
+    text-transform: uppercase;
+    letter-spacing: .20em;
+    font-size: 20px;
+    width: 480px;
+}
+
+header nav li {
+    padding: 10px;
+    border-right: 1px solid black;
+}
+
+header a {
+    text-decoration: #02ACE5 dotted underline;
+}
+
+header h1 {
+    margin-left: 10px;
+    font-family: 'Train One', cursive;
+    color: #02ACE5;
+    text-shadow: 1px 1px 1px #ffffff;
+    text-outline: 1px white;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    margin-left: 1100px;
+    width: 300px;
+    height: 200px;
+}
+
+aside {
+    position: absolute;
+    right: 0;
+    top: 100px;
+    padding: 10px;
+    width: 300px;
+    height: 10px;
+}
+
+article#qwerty {
+    position: relative;
+    top: 300px;
+    margin-left: 10px;
+    width: 800px;
+    height: 900px;
+}
+
+* {
+    margin: 0;
+}
+
+#div1 {
+    height: 50px;
+    width: 300px;
+    background: #02ACE5;
+    display: block;
+}
+
+#div2 {
+    height: 50px;
+    width: 300px;
+    background: cyan;
+    display: block;
+}
+
+#div3 {
+    height: 50px;
+    width: 300px;
+    background: #333333;
+    display: block;
+}
+
+
+.main {
+    margin: 50px;
+    text-align: left;
+}
+
+#img228 {
+    float: left;
+    margin-right: 1rem;
+    width: 200px;
+    height: 200px;
+}
+
+#img2288 {
+    float: right;
+    margin-right: 1rem;
+    width: 200px;
+    height: 200px;
+}

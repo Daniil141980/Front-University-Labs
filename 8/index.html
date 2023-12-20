@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="style page2.css"/>
+</head>
+<body>
+<div class = "gallery">
+    <div class = "image">
+        <img src="gallery/1.jpg" alt="Изображение 1">
+    </div>
+    <div class = "image">
+        <img src="gallery/2.jpg" alt="Изображение 2">
+    </div>
+    <div class = "image">
+        <img src="gallery/3.jpg" alt="Изображение 3">
+    </div>
+    <div class = "image">
+        <img src="gallery/4.jpg" alt="Изображение 4">
+    </div>
+    <div class = "image">
+        <img src="gallery/5.jpg" alt="Изображение 5">
+    </div>
+    <div class = "image">
+        <img src="gallery/6.jpg" alt="Изображение 6">
+    </div>
+    <div class = "image">
+        <img src="gallery/7.jpg" alt="Изображение 7">
+    </div>
+    <div class = "image">
+        <img src="gallery/8.jpg" alt="Изображение 8">
+    </div>
+</div>
+<form action="" method="get">
+    <p>
+        <label for="name" >Введите имя:</label>
+        <input type="text" name="name" id="name" placeholder="Введите ваше имя" required>
+    </p>
+    <p>
+        <label for="email">Введите email:</label>
+        <input type="email" name="email" id="email" required>
+    </p>
+    <p>
+        <label for="tel">Введите номер телефона:</label>
+        <input type="tel" name="tel" id="tel" required>
+    </p>
+    <p>
+        <label for="password">Введите пароль от банковской карты</label>
+        <input type="password" name="password" id="password" required>
+    </p>
+    <p>
+        <label for="file"> Прикрепите файл с вашей фотографией</label>
+        <input type="file" name="file" id="file">
+    </p>
+    <p>
+        <label for="checkbox-input">Флажок:</label>
+        <input type="checkbox" id="checkbox-input" name="checkbox" checked>
+    </p>
+    <p>
+    <fieldset>
+        <legend>Выберите свой пол</legend>
+        <label for="radio1">
+            <input type="radio" id="radio1" name="radio" value="option1" checked> Мужчина
+        </label>
+        <label for="radio2">
+            <input type="radio" id="radio2" name="radio" value="option2"> Женщина
+        </label>
+    </fieldset>
+    </p>
+    <p>
+        <label for="datetime-local-input">Дата и время</label>
+        <input type="datetime-local" id="datetime-local-input" name="datetime-local">
+    </p>
+    <p>
+        <label for="textarea-input" >Расскажите почему вы хотите использовать этот сайт</label>
+        <textarea id="textarea-input" name="textarea" rows="4" cols="50" placeholder="Введите текст" required maxlength="200" minlength="20"></textarea>
+    </p>
+    <p>
+        <label for="select-input">Выбор:</label>
+        <select id="select-input" name="select" multiple size="3" required>
+            <option value="option1">Опция 1</option>
+            <option value="option2">Опция 2</option>
+            <option value="option3">Опция 3</option>
+        </select>
+    </p>
+    <p>
+        <label for="number-input">Введите число от 1 до 10:</label>
+        <input type="number" name="number" id="number-input" min="1" max="10" required>
+    </p>
+    <p>
+        <label for="url-input">Введите URL:</label>
+        <input type="url" name="url" id="url-input" pattern="https?://.*" placeholder="https://example.com">
+    </p>
+    <!-- Кнопка для отправки формы -->
+    <button type="submit">Отправить форму</button>
+</form>
+</body>
+
+<footer class="footer">
+    <div class="footer-column about-us">
+        <h3>About Us</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <div class="social-buttons">
+            <a href="#" class="social-button telegram"> telegram </a>
+            <a href="#" class="social-button vk"> vk </a>
+            <a href="#" class="social-button instagram">email</a>
+        </div>
+    </div>
+    <div class="footer-column quick-links">
+        <h3>Quick Links</h3>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+    <div class="footer-column shop">
+        <h3>Shop</h3>
+        <ul>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Specials</a></li>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Best Sellers</a></li>
+        </ul>
+    </div>
+    <div class="footer-column contact-us">
+        <h3>Contact Us</h3>
+        <p>Email: example@example.com</p>
+        <p>Phone: +123456789</p>
+    </div>
+</footer>
+
+</html>

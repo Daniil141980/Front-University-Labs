@@ -1,0 +1,188 @@
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Три строки */
+    grid-template-columns: 1fr; /* Один столбец */
+    grid-template-areas:
+    "header"
+    "main"
+    "footer";
+    min-height: 100vh;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto); /* Определяем минимальную высоту для строк */
+}
+
+.image {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+    grid-column-end: span 1; /* Определяем, сколько ячеек будет занимать изображение по горизонтали */
+    grid-row-end: span 1; /* Определяем, сколько ячеек будет занимать изображение по вертикали */
+}
+
+/* Стиль для первой картинки, которая занимает две ячейки по горизонтали и вертикали */
+.image:nth-child(1) {
+    grid-column-end: span 2; /* Занимает 2 ячейки по горизонтали */
+    grid-row-end: span 2; /* Занимает 2 ячейки по вертикали */
+}
+
+.image:nth-child(5) {
+    grid-column-end: span 2; /* Занимает 2 ячейки по горизонтали */
+    grid-row-end: span 2; /* Занимает 2 ячейки по вертикали */
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image:hover {
+    transform: scale(1.1);
+}
+
+/* Дополнительный стиль для плавной анимации при наведении */
+.image img:hover {
+    transition: transform 0.3s;
+    transform: scale(1.1);
+}
+
+/* Общие стили формы */
+form {
+    display: grid;
+    background-color: #f0f0f0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Стилизация полей ввода */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+textarea,
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Учесть padding и border в общей ширине элемента */
+}
+
+/* Стилизация поля ввода при фокусе */
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    background-color: rgba(11, 6, 148, 0.24);
+}
+
+/* Стилизация кнопок */
+button {
+    width: 20%;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover{
+    transform: scaleX(1.1);
+}
+
+/* Добавление отступа между элементами формы */
+form > * {
+    margin-bottom: 10px;
+}
+
+/* Медиа-запрос для адаптивности */
+@media (max-width: 1000px) {
+    form {
+        grid-template-columns: repeat(1, 1fr); /* Две колонки на ширинах до 1000px */
+    }
+}
+
+footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+/* Стили для каждой колонки футера */
+.footer-column {
+    padding: 20px;
+}
+
+/* Заголовок колонки */
+.footer-column h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Стили для ссылок в колонках */
+.footer-column a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* Добавление псевдоэлементов ::before для декорации колонок */
+.footer-column::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #007bff;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+    bottom: 0;
+    text-decoration: none;
+}
+
+/* Анимация псевдоэлементов при наведении */
+.footer-column:hover::before {
+    transform: scaleX(1);
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 1000px) {
+    footer {
+        grid-template-columns: repeat(2, 1fr); /* Две колонки на ширинах до 1000px */
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        grid-template-columns: 1fr; /* Одна колонка на ширинах до 768px */
+    }
+
+    p {
+        font-size: 14px; /* Уменьшение размера шрифта на узких экранах */
+    }
+
+    .social-buttons {
+        flex-direction: column; /* Кнопки будут располагаться вертикально */
+        align-items: flex-start;
+    }
+}

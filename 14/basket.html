@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="products-container">
+    <div class="product" draggable="true" ondragstart="drag(event)" data-price="10" data-name="Товар 1">Товар 1 - $10</div>
+    <div class="product" draggable="true" ondragstart="drag(event)" data-price="20" data-name="Товар 2">Товар 2 - $20</div>
+    <div class="product" draggable="true" ondragstart="drag(event)" data-price="30" data-name="Товар 3">Товар 3 - $30</div>
+</div>
+
+<div id="cart" ondragover="allowDrop(event)" ondrop="drop(event)">
+    <p>Корзина</p>
+    <p>Итого: $<span id="total">0</span></p>
+    <ul id="cartItems"></ul>
+</div>
+<script>
+    function drag(event) {
+        event.dataTransfer.setData("text/plain", JSON.stringify({
+            price: event.target.dataset.price,
+            name: event.target.dataset.name
+        }));
+    }
+
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+
+    function drop(event) {
+        event.preventDefault();
+        let data = JSON.parse(event.dataTransfer.getData("text/plain"));
+
+        let cartItem = document.createElement("li");
+        cartItem.textContent = data.name + " - $" + data.price;
+
+        document.getElementById("cartItems").appendChild(cartItem);
+
+        updateTotal();
+    }
+
+    function updateTotal() {
+        let cartItems = document.getElementById("cartItems").children;
+        let total = 0;
+
+        for (let i = 0; i < cartItems.length; i++) {
+            let price = parseInt(cartItems[i].textContent.split("$")[1]);
+            total += price;
+        }
+
+        document.getElementById("total").textContent = total.toString();
+    }
+</script>
+</body>
+</html>

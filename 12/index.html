@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <title>Уведомления и Список</title>
+</head>
+<body>
+<div class="notification-container">
+    <div class="notification-icon">
+        <div id="notification-counter">0</div>
+    </div>
+    <div class="notification-content">
+        <p>Уведомления</p>
+        <!-- Здесь будут появляться новые уведомления -->
+    </div>
+</div>
+
+<div class="list-container">
+    <h2>Список товаров</h2>
+    <button onclick="createList()">Добавить в корзину</button>
+    <ul id="dynamic-list"></ul>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

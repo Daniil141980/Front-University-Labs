@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карточки с текстом</title>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="cards-container"></div>
+
+<form>
+    <div class="Place">
+        <h1 id="capcha"></h1>
+        <input type="text" placeholder="Введите текст">
+    </div>
+    <button id="submitButton">Отправить</button>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="capcha.js"></script>
+
+<div class="busket">
+    <h2>Корзина</h2>
+    <p>Текущее значение: <span id="value">10</span></p>
+    <button onclick="addToCart()">Добавить в корзину</button>
+</div>
+
+<script>
+    function Accumulator(startingValue) {
+        this.value = startingValue;
+        this.read = function () {
+            var number = parseInt(prompt("Введите число:"));
+            if (!isNaN(number)) {
+                this.value += number;
+                document.getElementById("value").textContent = this.value;
+            } else {
+                alert("Вы ввели некорректное число!");
+            }
+        }
+    }
+
+    var cart = new Accumulator(10);
+
+    function addToCart() {
+        cart.read();
+    }
+</script>
+
+
+<script>
+    function truncate(str, maxlength) {
+        if (str.length > maxlength) {
+            return str.slice(0, maxlength - 1) + '…';
+        }
+        return str;
+    }
+
+    const text1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+    const text2 = "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+    const text3 = "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.";
+
+    const maxLength = 20;
+
+    function createCard(text) {
+        const truncatedText = truncate(text, maxLength);
+        const cardContainer = document.getElementById('cards-container');
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.textContent = truncatedText;
+        cardContainer.appendChild(card);
+    }
+
+    createCard(text1);
+    createCard(text2);
+    createCard(text3);
+</script>
+
+</body>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pr14</title>
+  <style>
+    .gallery {
+      display: flex;
+    }
+
+    .thumbnail {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .main-image {
+      width: 380px;
+    }
+  </style>
+  <style>
+    /* Стили для выделенных элементов */
+    .selected {
+      background-color: #e24444;
+    }
+
+    /* Предотвращение выделения текста при кликах */
+    body {
+      user-select: none;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    /* Стили для списка */
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      width: 200px;
+      height: 30px;
+      font-size: 32px;
+      text-align: center;
+      cursor: pointer;
+      padding: 15px;
+      margin: 4px;
+      border: 1px solid #e24444;
+      border-radius: 4px;
+    }
+
+    li.selected {
+      color: #fff;
+    }
+  </style>
+  <style>
+    #slider {
+      width: 300px;
+      margin: 50px auto;
+      position: relative;
+    }
+
+    #slider-bar {
+      height: 10px;
+      background-color: #ccc;
+      position: relative;
+    }
+
+    #slider-handle {
+      width: 20px;
+      height: 20px;
+      background-color: #3498db;
+      border-radius: 50%;
+      position: absolute;
+      top: -5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="left-wrapper">
+  <div id="gallery" class="gallery">
+    <img
+            src="small_image1.jpg"
+            alt="Thumbnail 1"
+            class="thumbnail"
+            onclick="changeImage('small_image1.jpg')"
+            width="120px"
+    />
+    <img
+            src="small_image2.jpg"
+            alt="Thumbnail 2"
+            class="thumbnail"
+            onclick="changeImage('small_image2.jpg')"
+            width="120px"
+    />
+    <img
+            src="small_image3.jpg"
+            alt="Thumbnail 3"
+            class="thumbnail"
+            onclick="changeImage('small_image3.jpg')"
+            width="120px"
+    />
+  </div>
+
+  <div id="mainImage">
+    <img src="small_image1.jpg" alt="Main Image" class="main-image"/>
+  </div>
+
+  <div id="contents">
+    <p style="font-size: 32px">
+      Щёлкните для перехода на сайт
+      <a href="https://daniil141980.github.io/">ссылка</a>.
+    </p>
+  </div>
+</div>
+
+
+<div class="right-wrapper">
+  <ul id="selectableList">
+    <li>Элемент 1</li>
+    <li>Элемент 2</li>
+    <li>Элемент 3</li>
+    <li>Элемент 4</li>
+    <li>Элемент 5</li>
+    <li>Элемент 6</li>
+    <li>Элемент 7</li>
+    <li>Элемент 8</li>
+  </ul>
+
+  <div id="slider">
+    <div id="slider-bar">
+      <div id="slider-handle"></div>
+    </div>
+  </div>
+
+  <button style="border: 1px #e24444 solid; border-radius: 4px; background: transparent; padding: 15px">
+    <a href="animation.html" style="text-decoration: none; color:#e24444; font-size: 24px; font-weight: bold;">Анимации</a>
+  </button>
+</div>
+
+<script>
+  function handleClick(event) {
+    if (event.target.tagName === "A") {
+      const isConfirmed = confirm("Do you really want to leave the page?");
+      if (!isConfirmed) {
+        event.preventDefault();
+      }
+    }
+  }
+
+  const contentsElement = document.getElementById("contents");
+  contentsElement.addEventListener("click", handleClick);
+
+  function changeImage(newSrc) {
+    const mainImage = document
+            .getElementById("mainImage")
+            .getElementsByTagName("img")[0];
+    mainImage.src = newSrc;
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const list = document.getElementById("selectableList");
+
+    list.addEventListener("click", function (event) {
+      const clickedElement = event.target;
+
+      // Если нажата клавиша Ctrl (Cmd для Mac), то переключаем выделение
+      if (event.ctrlKey || event.metaKey) {
+        clickedElement.classList.toggle("selected");
+      } else {
+        // Если элемент уже выделен, снимаем выделение
+        if (clickedElement.classList.contains("selected")) {
+          clickedElement.classList.remove("selected");
+        } else {
+          // Иначе отменяем выделение у всех элементов и выделяем только текущий
+          const allItems = list.getElementsByTagName("li");
+          for (const item of allItems) {
+            item.classList.remove("selected");
+          }
+          clickedElement.classList.add("selected");
+        }
+      }
+    });
+  });
+
+  const slider = document.getElementById("slider");
+  const handle = document.getElementById("slider-handle");
+  let isDragging = false;
+
+  handle.addEventListener("mousedown", (event) => {
+    isDragging = true;
+    handle.style.transition = "none";
+    startDragging(event);
+  });
+
+  document.addEventListener("mouseup", () => {
+    if (isDragging) {
+      handle.style.transition = "left 0.3s ease-out";
+      isDragging = false;
+    }
+  });
+
+  document.addEventListener("mousemove", (event) => {
+    if (isDragging) {
+      startDragging(event);
+    }
+  });
+
+  function startDragging(event) {
+    const sliderRect = slider.getBoundingClientRect();
+    const handleRect = handle.getBoundingClientRect();
+
+    let left = event.clientX - sliderRect.left - handleRect.width / 2; // курсор, полоса, ручка
+    const maxLeft = slider.clientWidth - handleRect.width;
+
+    left = Math.max(0, Math.min(left, maxLeft));
+
+    handle.style.left = `${left}px`;
+  }
+</script>
+</body>
+</html>

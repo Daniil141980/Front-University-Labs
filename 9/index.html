@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вход на сайт</title>
+    <style>
+        .like-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+
+        .liked {
+            background-color: #e74c3c;
+        }
+
+        .drawing {
+            cursor: crosshair;
+        }
+
+        .drawn-element {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #e74c3c;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+<h1>Панель управления сайтом</h1>
+<form id="loginForm">
+    <label for="username">Имя пользователя:</label>
+    <input type="text" id="username" name="username" required>
+    <br>
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password" required>
+    <br>
+    <button type="submit">Войти</button>
+</form>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        if (username === 'qwerty' && password === '123') {
+            var registration = prompt('Желаете пройти регистрацию на сайте? (yes/no)').toLowerCase();
+
+            if (registration === 'yes') {
+                alert('Круто!');
+            } else {
+                alert('Попробуйте ещё раз.');
+            }
+        } else {
+            alert('Неверное имя пользователя или пароль. Попробуйте ещё раз.');
+        }
+    });
+</script>
+<button class="like-button" onclick="toggleLike()">Нравится</button>
+
+<script>
+    var isLiked = false;
+    var isDrawing = false;
+    function toggleLike() {
+        var button = document.querySelector('.like-button');
+        isLiked = !isLiked;
+
+        if (isLiked) {
+            button.classList.add('liked');
+            button.textContent = 'Не нравится';
+            startDrawing();
+        } else {
+            button.classList.remove('liked');
+            button.textContent = 'Нравится';
+            stopDrawing();
+        }
+    }
+
+    function startDrawing() {
+        isDrawing = true;
+        document.body.classList.add('drawing');
+        document.addEventListener('mousemove', drawElement);
+        document.addEventListener('keydown', checkKey);
+    }
+
+    function stopDrawing() {
+        isDrawing = false;
+        document.body.classList.remove('drawing');
+        document.removeEventListener('mousemove', drawElement);
+        document.removeEventListener('keydown', checkKey);
+    }
+
+    function drawElement(event) {
+        if (isDrawing) {
+            var element = document.createElement('div');
+            element.className = 'drawn-element';
+            element.style.left = (event.clientX - 10) + 'px';
+            element.style.top = (event.clientY - 10) + 'px';
+            document.body.appendChild(element);
+        }
+    }
+
+    function checkKey(event) {
+        if (event.key === "Space") {
+            if (isDrawing) {
+                stopDrawing();
+                var button = document.querySelector('.like-button');
+                button.classList.remove('liked');
+                button.textContent = 'Нравится';
+            } else {
+                startDrawing();
+                var button = document.querySelector('.like-button');
+                button.classList.add('liked');
+                button.textContent = 'Не нравится';
+            }
+        }
+        if (event.key === "Escape") {
+            var elements = document.querySelectorAll('.drawn-element');
+            elements.forEach(function(element) {
+                element.parentNode.removeChild(element);
+            });
+        }
+    }
+
+    var login = prompt("Введите ваш логин:");
+
+    if (login === "adm") {
+        var password = prompt("Введите пароль:");
+
+        if (password === "123") {
+            alert("Здравствуйте!");
+        } else if (password === null) {
+            alert("Отменено");
+        } else {
+            alert("Неверный пароль");
+        }
+    } else if (login === null) {
+        alert("Отменено");
+    } else {
+        alert("Я вас не знаю");
+    }
+</script>
+</body>
+</html>

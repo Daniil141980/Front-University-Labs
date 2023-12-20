@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 200vh;
+        }
+
+        .content {
+            padding: 20px;
+            background-color: #0724e0;
+            color: black;
+            border-radius: 50px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var contentCounter = 1;
+        var isCreatingContent = false;
+
+        function handleScroll() {
+            if (isCreatingContent) {
+                return; // Если уже создается контент, выходим из функции
+            }
+
+            var scrolledValue = window.scrollY;
+            var windowHeight = window.innerHeight;
+            var documentHeight = document.documentElement.scrollHeight;
+
+            // Проверяем, находится ли прокрутка внизу страницы с учетом разницы в 100 пикселей
+            if (scrolledValue + windowHeight >= documentHeight - 100) {
+                isCreatingContent = true;
+
+                // Создаем новый элемент контента
+                var newContent = document.createElement('div');
+                newContent.className = 'content';
+                newContent.innerHTML = 'Dynamic block ' + contentCounter;
+
+                document.body.appendChild(newContent);
+
+                contentCounter++;
+
+                // Устанавливаем таймаут для сброса флага через короткое время
+                setTimeout(function () {
+                    isCreatingContent = false;
+                }, 1000);
+            }
+        }
+        window.addEventListener('scroll', handleScroll);
+    });
+</script>
+</body>
+</html>

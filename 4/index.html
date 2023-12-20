@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Первая практика</title>
+    <style>
+        aside {
+            background: #ffffff;
+            padding: 10px;
+            float: right;
+
+        }
+    </style>
+    <link rel="icon" href="image.ico" sizes="any">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Train+One&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div id="frst"><img src="first.png"
+                        alt="Hello World" width="100ppx" height="100ppx"></div>
+
+    <div id="scnd"><h1>Digital Den</h1></div>
+    <div id="third">
+        <nav>
+            <ul>
+                <li><a href="#About magazine">Магазин</a>
+                <li><a href="#About">Продукция</a>
+                <li><a href="#Image">Картинки</a>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main>
+    <form method="post">
+        <input type="text" name="text_input" id="text_input" placeholder="Введите текст" required> <br> <br>
+        <input type="tel" name="tel_input" id="tel_input" placeholder="Введите номер телефона" pattern="\d{10}" required> <br> <br>
+        <input type="email" name="email_input" id="email_input" placeholder="Введите email" required> <br> <br>
+        <input type="password" name="password_input" id="password_input" placeholder="Введите пароль" required> <br> <br>
+        <input type="file" name="file_input" id="file_input" accept=".jpg, .png" required> <br> <br>
+        <input type="checkbox" name="checkbox_input" id="checkbox_input" checked> <br> <br>
+        <input type="radio" name="radio_input" id="radio_input1" value="option1" checked> <br>
+        <input type="radio" name="radio_input" id="radio_input2" value="option2"> <br> <br>
+        <input type="submit" value="Отправить"> <br> <br>
+        <input type="datetime-local" name="datetime_input" id="datetime_input" min="2023-01-01T00:00" max="2023-12-31T23:59" required> <br> <br>
+
+        <button type="button">Обычная кнопка</button> <br> <br>
+        <button type="submit">Отправить форму</button> <br> <br>
+
+
+        <textarea name="textarea_input" id="textarea_input" cols="30" rows="5" maxlength="200" minlength="10" placeholder="Введите текст" required></textarea> <br> <br>
+
+        <fieldset>
+            <legend>Легенда для fieldset</legend>
+        </fieldset> <br> <br>
+
+        <label for="text_input">Метка для текстового поля:</label> <br> <br>
+        <label for="checkbox_input">Метка для чекбокса:</label> <br> <br>
+
+        <select name="select_input" id="select_input" multiple size="3" required>
+            <option value="option1">Опция 1</option>
+            <option value="option2">Опция 2</option>
+            <option value="option3">Опция 3</option>
+        </select> <br>  <br>
+    </form>
+
+    <iframe
+            width="600"
+            height="450"
+            frameborder="0"
+            style="border:0"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d70015.94751111958!2d37.09910783546761!3d56.74299385620245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b442543a449f99%3A0xa7c9eadd244e2090!2z0JTRg9Cx0L3QsCwg0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC7Liwg0KDQvtGB0YHQuNGP!5e0!3m2!1sru!2sfr!4v1696237044295!5m2!1sru!2sfr"
+            allowfullscreen
+    ></iframe> <br> <br>
+
+    <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/aA7M7BRNOPc"
+            frameborder="0"
+            allowfullscreen
+    ></iframe>
+
+
+</main>
+<br>
+<footer>
+    <a href="#Digital">На главную</a><br>
+    <a href="#About">О продукции</a><br>
+    <p>Разработчик - Коршунов Даниил</p><br>
+    <address>
+        <a href="tel:89652747871">Номер телефона</a><br>
+        <a href="mailto:daniil141980@gmail.com">Почта</a><br>
+    </address>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 200vh;
+        }
+
+        .parallax-container {
+            background-image: url('../../../Downloads/Telegram Desktop/pr13/pr13/i.webp');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax-container">
+        <p>Я люблю бобров! Я люблю бобров! Я люблю бобров! Я люблю бобров! Я люблю бобров! Я люблю бобров! Я люблю бобров! Я люблю бобров! Я люблю бобров! Я люблю бобров! Я люблю бобров! Я люблю бобров! Я люблю бобров! Я люблю бобров!Я люблю бобров! Я люблю бобров!</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var parallaxContainer = document.querySelector('.parallax-container');
+
+            function handleScroll() {
+                // Получаем текущее значение прокрутки страницы
+                var scrolledValue = window.scrollY;
+
+                parallaxContainer.style.backgroundPositionY = -(scrolledValue * 10) + 'px';
+            }
+
+            // Добавляем события прокрутки страницы
+            window.addEventListener('scroll', handleScroll);
+
+            handleScroll();
+        });
+
+    </script>
+</body>
+</html>

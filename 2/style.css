@@ -1,0 +1,30 @@
+h1 {
+    font-family: 'Train One', cursive;
+}
+
+article {
+    padding-top: 10px;
+    width: 60%;
+    margin-left: 40px;
+    background: #333333;
+}
+
+section {
+    padding-top: 10px;
+    margin: 25px;
+    background: #02ACE5;
+    transition: all linear 0.5s;
+}
+
+section:hover {
+    background: #A9E8E7;
+}
+
+li:active {
+    color: #4CBDBB;
+}
+
+a:visited {
+    color: black;
+    background: #02ACE5;
+}
